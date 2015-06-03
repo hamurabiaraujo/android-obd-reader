@@ -6,70 +6,70 @@
         android:title="@string/pref_upload_category_title">
         <CheckBoxPreference
             android:defaultValue="false"
-            android:dialogTitle="Enable Data Upload"
+            android:dialogTitle="Upload dos dados"
             android:key="upload_data_preference"
-            android:summaryOff="Disable http data upload"
-            android:summaryOn="Enable http data upload"
-            android:title="Enable Data Upload" />
+            android:summaryOff="Desativar upload dos dados colhidos"
+            android:summaryOn="Ativar upload dos dados colhidos"
+            android:title="Ativar upload dos dados" />
         <EditTextPreference
             android:defaultValue="http://www.example.com/obd/get_data.php"
             android:dialogTitle="Upload URL"
             android:key="upload_url_preference"
-            android:summary="POST URL that will accept real-time data"
+            android:summary="URL para onde os dados colhidos em tempo real deverao ser enviados"
             android:title="Upload URL"  />
         <EditTextPreference
             android:defaultValue=""
-            android:dialogTitle="Vehicle ID"
+            android:dialogTitle="ID do veiculo"
             android:key="vehicle_id_preference"
-            android:summary="Optional unique id of this vehicle, used with uploaded data"
-            android:title="Vehicle ID" />
+            android:summary="ID unico do carro (OPICIONAL), usado para upload dos dados"
+            android:title="ID do veiculo" />
     </PreferenceCategory>
     <PreferenceCategory
         android:title="@string/title_pref_bluetooth">
         <CheckBoxPreference
             android:defaultValue="false"
-            android:dialogTitle="Enable Bluetooth"
+            android:dialogTitle="Ativar Bluetooth"
             android:key="enable_bluetooth_preference"
-            android:summaryOff="Turn on Bluetooth"
-            android:summaryOn="Turn off Bluetooth"
-            android:title="Enable Bluetooth" />
+            android:summaryOff="Ativar Bluetooth"
+            android:summaryOn="Desativar Bluetooth"
+            android:title="Bluetooth" />
         <ListPreference
-            android:dialogTitle="Bluetooth Devices"
+            android:dialogTitle="Dispositivos Bluetooth"
             android:key="bluetooth_list_preference"
-            android:summary="List of paired bluetooth devices."
-            android:title="Bluetooth Devices" />
+            android:summary="Lista de dispositivos pareados"
+            android:title="Dispositivos Bluetooth" />
     </PreferenceCategory>
     <PreferenceCategory
         android:title="@string/title_pref_gps"
         android:key="@string/pref_gps_category">
         <CheckBoxPreference
             android:defaultValue="false"
-            android:dialogTitle="Enable GPS"
+            android:dialogTitle="Ativar GPS"
             android:key="enable_gps_preference"
-            android:summaryOff="Turn on GPS"
-            android:summaryOn="Turn off GPS"
-            android:title="Enable GPS" />
+            android:summaryOff="Ativar o GPS do dispositivo"
+            android:summaryOn="Desativar o GPS do dispositivo"
+            android:title="Ativar GPS" />
         <EditTextPreference
             android:defaultValue="1"
-            android:dialogTitle="Update Period in Seconds"
+            android:dialogTitle="Periodo de atualizaçao em segundos"
             android:key="gps_update_period_preference"
-            android:summary="The length of time between querying new position in seconds"
-            android:title="Update Period in Seconds" />
+            android:summary="O intervalo em segundos para atualizar os dados"
+            android:title="Periodo de atualizaçao em segundos" />
         <EditTextPreference
             android:defaultValue="5"
-            android:dialogTitle="Update Period in Meters"
+            android:dialogTitle="Distancia para atualizaçao em metros"
             android:key="gps_distance_period_preference"
-            android:summary="Min Distance between location updates, in meters"
-            android:title="Update Period in Meters" />
+            android:summary="Distancia minima para atualizar os dados"
+            android:title="Distancia para atualizaçao em metros" />
     </PreferenceCategory>
     <PreferenceCategory
         android:title="@string/title_pref_obd">
         <ListPreference
             android:defaultValue="AUTO"
-            android:dialogTitle="OBD Protocol"
+            android:dialogTitle="Protocolos OBD"
             android:key="obd_protocols_preference"
-            android:summary="Select OBD Protocol to use"
-            android:title="OBD Protocol" />
+            android:summary="Selecione o protocolo OBD para ser usado"
+            android:title="Protocolos OBD" />
         <CheckBoxPreference
             android:defaultValue="false"
             android:dialogTitle="Imperial Units"
@@ -79,10 +79,10 @@
             android:title="Imperial Units" />
         <EditTextPreference
             android:defaultValue="4"
-            android:dialogTitle="Update Period in Seconds"
+            android:dialogTitle="Periodo em atualizacao em segundos"
             android:key="obd_update_period_preference"
             android:summary="The length of time between querying vehicle data in seconds"
-            android:title="Update Period in Seconds" />
+            android:title="Periodo em atualizacao em segundos" />
         <EditTextPreference
             android:defaultValue="70"
             android:dialogTitle="Maximum Fuel Economy Value"
