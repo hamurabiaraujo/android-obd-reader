@@ -104,7 +104,7 @@ public class ObdGatewayService extends AbstractGatewayService {
     Log.d(TAG, "Stopping Bluetooth discovery.");
     btAdapter.cancelDiscovery();
 
-    showNotification("Tap to open OBD-Reader", "Starting OBD connection..", R.drawable.ic_launcher, true, true, false);
+    showNotification("Tap to open OBD-Reader", "Starting OBD connection..", R.mipmap.ic_launcher, true, true, false);
 
     try {
       startObdConnection();

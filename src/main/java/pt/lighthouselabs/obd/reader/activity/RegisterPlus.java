@@ -118,11 +118,8 @@ public class RegisterPlus extends ActionBarActivity implements GoogleApiClient.C
                          * pois ainda não temos conexão com webservice e banco sqlite
                          */
 
-                    /* TODO
-                        chamada para o menu principal do app
-                     */
-//                    Intent i = new Intent(RegisterPlus.this, Menu_principal.class);
-//                    startActivity(i);
+                    Intent i = new Intent(RegisterPlus.this, MainActivity.class);
+                    startActivity(i);
                 }
 
             }
