@@ -8,8 +8,11 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import pt.lighthouselabs.obd.reader.R;
+import pt.lighthouselabs.obd.reader.user.User;
+import pt.lighthouselabs.obd.reader.user.UserLog;
 
 public class Login extends ActionBarActivity {
 
@@ -63,6 +66,9 @@ public class Login extends ActionBarActivity {
     }
 
     public void abrirMenu(View view) {
+        User user = new User();
+        UserLog userLog = new UserLog(this);
+
         String email, senha;
         String emailPattern = "[a-zA-Z0-9._-]+@[a-z]+\\.+[a-z]+";
 
@@ -78,8 +84,21 @@ public class Login extends ActionBarActivity {
             editSenhaLogin.setFocusable(true);
             editSenhaLogin.requestFocus();
         } else {
-            Intent i = new Intent(this, MainActivity.class);
-            startActivity(i);
+            user = userLog.buscarPeloEmail(email);
+
+            if (user != null){
+                if (senha == user.getSenha()){
+                    Toast.makeText(this, "Usuário logado com sucesso!", Toast.LENGTH_LONG).show();
+
+                    Intent i = new Intent(this, MainActivity.class);
+                    startActivity(i);
+                } else {
+                    Toast.makeText(this, "Senha incorreta!", Toast.LENGTH_LONG).show();
+                }
+            } else {
+                Toast.makeText(this, "Usuário inexistente!", Toast.LENGTH_LONG).show();
+            }
+
         }
     }
 }

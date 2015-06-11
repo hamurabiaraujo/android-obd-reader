@@ -26,6 +26,7 @@ import com.google.android.gms.plus.model.people.Person;
 
 
 import pt.lighthouselabs.obd.reader.R;
+import pt.lighthouselabs.obd.reader.user.User;
 
 public class RegisterPlus extends ActionBarActivity implements GoogleApiClient.ConnectionCallbacks, GoogleApiClient.OnConnectionFailedListener {
 
@@ -107,19 +108,25 @@ public class RegisterPlus extends ActionBarActivity implements GoogleApiClient.C
                     editSenhaRepete.setFocusable(true);
                     editSenhaRepete.requestFocus();
                 } else {
-                        /*
-                         * Irá cadastrar no servidor
-                         * Depois irá para função de login já com e-mail e senha
-                         * para gerar os dados necessários para uso da aplicação.
-                         *
-                         * Depois será mostrada a tela de MENU PRINCIPAL.
-                         *
-                         * Temporáriamente estamos mostrando direto a tela de MENU PRINCIPAL,
-                         * pois ainda não temos conexão com webservice e banco sqlite
-                         */
 
-                    Intent i = new Intent(RegisterPlus.this, MainActivity.class);
-                    startActivity(i);
+                    Person p = Plus.PeopleApi.getCurrentPerson(googleApiClient);
+
+                    if(p != null) {
+                        String idStr = p.getId();
+                        String nomeStr = p.getDisplayName();
+                        String emailStr = Plus.AccountApi.getAccountName(googleApiClient);
+
+                        User user = new User();
+
+                        user.setIdGoogle(idStr);
+                        user.setNome(nomeStr);
+                        user.setEmail(emailStr);
+                        user.setSenha(senha);
+
+                        Toast.makeText(RegisterPlus.this, "Cadastrado com sucesso", Toast.LENGTH_LONG).show();
+                        Intent i = new Intent(RegisterPlus.this, MainActivity.class);
+                        startActivity(i);
+                    }
                 }
 
             }

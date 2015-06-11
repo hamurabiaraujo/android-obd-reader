@@ -6,17 +6,18 @@ import pt.lighthouselabs.obd.reader.car.Car;
  * Created by hamurabi on 6/11/15.
  */
 public class User {
-    private int idGoogle;
+    public static String[] COLUNAS = new String[]{"ID", "NOME", "EMAIL", "SENHA", "CARRO"};
+    private String idGoogle;
     private String nome;
     private String email;
     private String senha;
     private Car carro;
 
-    public int getIdGoogle() {
+    public String getIdGoogle() {
         return idGoogle;
     }
 
-    public void setIdGoogle(int idGoogle) {
+    public void setIdGoogle(String idGoogle) {
         this.idGoogle = idGoogle;
     }
 

@@ -74,7 +74,7 @@
         </activity>
         <activity
             android:name=".activity.RecoverPassword"
-            android:theme="@style/Theme.AppCompat"
+            android:theme="@style/Theme.AppCompat.Light.DarkActionBar"
             android:label="@string/title_activity_recover_password" >
         </activity>
     </application>

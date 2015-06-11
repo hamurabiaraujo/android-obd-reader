@@ -7,6 +7,7 @@ import pt.lighthouselabs.obd.reader.user.User;
  * Created by hamurabi on 6/11/15.
  */
 public class Car {
+    private int id;
     private String modelo;
     private float motor;
     private int ano;
@@ -32,6 +33,14 @@ public class Car {
 
     public User getUsuario() {
         return usuario;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 
     public void setModelo(String modelo) {
