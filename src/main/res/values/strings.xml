@@ -18,7 +18,7 @@
   <string name="menu_start_live_data">Iniciar leitura dos dados</string>
   <string name="menu_stop_live_data">Parar leitura dos dados</string>
   <string name="menu_settings">Configurações</string>
-  <string name="menu_get_dtc">Get DTC</string>
+  <string name="menu_get_dtc">Pegar DTC</string>
   <string name="text_gps" translatable="false">GPS</string>
   <string name="text_bluetooth" translatable="false">Bluetooth</string>
   <string name="text_neutral" translatable="false">N</string>
@@ -29,10 +29,10 @@
   <string name="title_pref_commands">Comandos OBD</string>
   <string name="title_pref_bluetooth" translatable="false">Bluetooth</string>
   <string name="title_pref_gps" translatable="false">GPS</string>
-    <string name="title_activity_register_plus">RegisterPlus</string>
+  <string name="title_activity_register_plus">Cadastro</string>
 
-    <string name="hello_world">Hello world!</string>
-    <string name="title_activity_register_choose">RegisterChoose</string>
-    <string name="title_activity_login">Login</string>
-    <string name="title_activity_recover_password">RecoverPassword</string>
+  <string name="hello_world">Hello world!</string>
+  <string name="title_activity_register_choose">Cadastro com o Google+</string>
+  <string name="title_activity_login">AutoBoard</string>
+  <string name="title_activity_recover_password">Recuperar Senha</string>
 </resources>
