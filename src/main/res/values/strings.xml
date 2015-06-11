@@ -29,4 +29,8 @@
   <string name="title_pref_commands">Comandos OBD</string>
   <string name="title_pref_bluetooth" translatable="false">Bluetooth</string>
   <string name="title_pref_gps" translatable="false">GPS</string>
+    <string name="title_activity_register_plus">RegisterPlus</string>
+
+    <string name="hello_world">Hello world!</string>
+    <string name="title_activity_register_choose">RegisterChoose</string>
 </resources>
