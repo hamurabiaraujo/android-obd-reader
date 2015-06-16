@@ -270,9 +270,9 @@ public class RegisterPlus extends ActionBarActivity implements GoogleApiClient.C
                 User user = new User();
 
                 user.setIdGoogle(idStr);
-                user.setNome(nomeStr);
+                user.setName(nomeStr);
                 user.setEmail(emailStr);
-                user.setSenha(senha);
+                user.setPassword(senha);
 
                 UserLog userLog = new UserLog(this);
 

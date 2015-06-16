@@ -4,9 +4,6 @@ import java.util.Date;
 
 import pt.lighthouselabs.obd.reader.car.Car;
 
-/**
- * Created by hamurabi on 6/11/15.
- */
 public class Maintenance {
     private Date data;
     private int quilometragem;

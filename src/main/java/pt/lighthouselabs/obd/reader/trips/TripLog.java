@@ -20,7 +20,7 @@ public class TripLog {
   /// the database version number
   public static final int DATABASE_VERSION = 1;
   /// the name of the database
-  public static final String DATABASE_NAME = "AutoBoard";
+  public static final String DATABASE_NAME = "autoboard";
   /// a tag string for debug logging (the name of this class)
   private static final String TAG = TripLog.class.getName();
   /// database table names

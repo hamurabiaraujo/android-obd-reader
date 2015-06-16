@@ -3,9 +3,6 @@ package pt.lighthouselabs.obd.reader.car;
 import pt.lighthouselabs.obd.reader.manufacturer.Manufacturer;
 import pt.lighthouselabs.obd.reader.user.User;
 
-/**
- * Created by hamurabi on 6/11/15.
- */
 public class Car {
     private int id;
     private String modelo;
@@ -13,7 +10,7 @@ public class Car {
     private int ano;
     private String observacao;
     private User usuario;
-    private Manufacturer fabricante;
+    private int idFabricante;
 
     public int getAno() {
         return ano;
@@ -63,11 +60,11 @@ public class Car {
         this.usuario = usuario;
     }
 
-    public Manufacturer getFabricante() {
-        return fabricante;
+    public int getFabricante() {
+        return idFabricante;
     }
 
-    public void setFabricante(Manufacturer fabricante) {
-        this.fabricante = fabricante;
+    public void setFabricante(int fabricante) {
+        this.idFabricante = fabricante;
     }
 }

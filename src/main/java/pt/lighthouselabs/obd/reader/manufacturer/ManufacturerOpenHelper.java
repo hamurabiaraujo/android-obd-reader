@@ -1,22 +1,22 @@
-package pt.lighthouselabs.obd.reader.user;
+package pt.lighthouselabs.obd.reader.manufacturer;
 
 import android.content.Context;
-import android.database.DatabaseErrorHandler;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.util.Log;
 
-public class UserLogOpenHelper extends SQLiteOpenHelper {
-    /// tag for logging
-    private static final String TAG = UserLogOpenHelper.class.getName();
+public class ManufacturerOpenHelper extends SQLiteOpenHelper{
 
-    public UserLogOpenHelper(Context context) {
-        super(context, UserLog.DATABASE_NAME, null, UserLog.DATABASE_VERSION);
+    /// tag for logging
+    private static final String TAG = ManufacturerOpenHelper.class.getName();
+
+    public ManufacturerOpenHelper(Context context) {
+        super(context, ManufacturerLog.DATABASE_NAME, null, ManufacturerLog.DATABASE_VERSION);
     }
 
     @Override
     public void onCreate(SQLiteDatabase db) {
-        execSQL(db, UserLog.DATABASE_CREATE);
+        execSQL(db, ManufacturerLog.DATABASE_CREATE);
     }
 
     @Override

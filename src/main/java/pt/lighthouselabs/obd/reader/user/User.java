@@ -3,12 +3,12 @@ package pt.lighthouselabs.obd.reader.user;
 import pt.lighthouselabs.obd.reader.car.Car;
 
 public class User {
-    public static String[] COLUNAS = new String[]{"ID", "NOME", "EMAIL", "SENHA", "IDCARRO"};
+    public static String[] COLUNAS = new String[]{"ID", "NAME", "EMAIL", "PASSWORD", "IDCAR"};
     private String idGoogle;
-    private String nome;
+    private String name;
     private String email;
-    private String senha;
-    private int carro;
+    private String password;
+    private int car;
 
     public String getIdGoogle() {
         return idGoogle;
@@ -18,12 +18,12 @@ public class User {
         this.idGoogle = idGoogle;
     }
 
-    public String getNome() {
-        return nome;
+    public String getName() {
+        return name;
     }
 
-    public void setNome(String nome) {
-        this.nome = nome;
+    public void setName(String name) {
+        this.name = name;
     }
 
     public String getEmail() {
@@ -34,19 +34,19 @@ public class User {
         this.email = email;
     }
 
-    public String getSenha() {
-        return senha;
+    public String getPassword() {
+        return password;
     }
 
-    public void setSenha(String senha) {
-        this.senha = senha;
+    public void setPassword(String password) {
+        this.password = password;
     }
 
-    public int getCarro() {
-        return carro;
+    public int getCar() {
+        return car;
     }
 
-    public void setCarro(int carro) {
-        this.carro = carro;
+    public void setCar(int car) {
+        this.car = car;
     }
 }

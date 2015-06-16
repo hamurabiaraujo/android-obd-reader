@@ -1,16 +1,22 @@
 package pt.lighthouselabs.obd.reader.manufacturer;
 
-/**
- * Created by hamurabi on 6/11/15.
- */
 public class Manufacturer {
-    String nome;
+    int id;
+    String name;
 
     public String getNome() {
-        return nome;
+        return name;
     }
 
     public void setNome(String nome) {
-        this.nome = nome;
+        this.name = nome;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 }

@@ -87,7 +87,7 @@ public class Login extends ActionBarActivity {
             user = userLog.buscarPeloEmail(email);
 
             if (user != null){
-                if (senha == user.getSenha()){
+                if (senha == user.getPassword()){
                     Toast.makeText(this, "Usuário logado com sucesso!", Toast.LENGTH_LONG).show();
 
                     Intent i = new Intent(this, MainActivity.class);
