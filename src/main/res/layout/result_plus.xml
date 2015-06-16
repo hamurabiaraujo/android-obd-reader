@@ -69,6 +69,7 @@
         android:padding="5dp"
         android:layout_below="@+id/editSenhaRepete"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="10dp"/>
+        android:layout_marginTop="10dp"
+        android:onClick="cadastrar"/>
 
 </RelativeLayout>

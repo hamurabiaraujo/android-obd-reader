@@ -2,16 +2,13 @@ package pt.lighthouselabs.obd.reader.user;
 
 import pt.lighthouselabs.obd.reader.car.Car;
 
-/**
- * Created by hamurabi on 6/11/15.
- */
 public class User {
-    public static String[] COLUNAS = new String[]{"ID", "NOME", "EMAIL", "SENHA", "CARRO"};
+    public static String[] COLUNAS = new String[]{"ID", "NOME", "EMAIL", "SENHA", "IDCARRO"};
     private String idGoogle;
     private String nome;
     private String email;
     private String senha;
-    private Car carro;
+    private int carro;
 
     public String getIdGoogle() {
         return idGoogle;
@@ -45,11 +42,11 @@ public class User {
         this.senha = senha;
     }
 
-    public Car getCarro() {
+    public int getCarro() {
         return carro;
     }
 
-    public void setCarro(Car carro) {
+    public void setCarro(int carro) {
         this.carro = carro;
     }
 }

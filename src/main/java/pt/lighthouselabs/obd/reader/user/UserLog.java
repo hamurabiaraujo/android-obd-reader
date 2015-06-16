@@ -10,9 +10,6 @@ import java.util.List;
 
 import pt.lighthouselabs.obd.reader.car.Car;
 
-/**
- * Created by hamurabi on 6/11/15.
- */
 public class UserLog {
     private SQLiteDatabase bd;
 
@@ -21,22 +18,26 @@ public class UserLog {
         bd = userLogOpenHelper.getWritableDatabase();
     }
 
-    public void insert (User u) {
-        ContentValues valores = new ContentValues(4);
+    public void inserir (User u) {
+        ContentValues valores = new ContentValues();
+        valores.put("ID", u.getIdGoogle());
         valores.put("NOME", u.getNome());
         valores.put("EMAIL", u.getEmail());
         valores.put("SENHA", u.getSenha());
-        valores.put("CARRO", u.getCarro().getId());
+        valores.put("IDCARRO", u.getCarro());
 
-        if (u.getIdGoogle().length() > 0) {
-            /*
-            * TODO
-            * precisa mesmo setar novamente os dados?
-            */
-            bd.update("USER", valores, "ID = ?", new String[] {"" + u.getIdGoogle()});
-        } else {
-            bd.insert("USER", null, valores);
-        }
+        bd.insert("USER", null, valores);
+    }
+
+    public void atualizar (User u) {
+        ContentValues valores = new ContentValues();
+        valores.put("ID", u.getIdGoogle());
+        valores.put("NOME", u.getNome());
+        valores.put("EMAIL", u.getEmail());
+        valores.put("SENHA", u.getSenha());
+        valores.put("IDCARRO", u.getCarro());
+
+        bd.update("USER", valores, "ID = ?", new String[]{"" + u.getIdGoogle()});
     }
 
     public void remover (User u) {
@@ -46,15 +47,15 @@ public class UserLog {
 
     public List<User> listar(){
         List<User> users = new ArrayList<User>();
-        Cursor c = bd.query("USER", User.COLUNAS,
-                null, null, null, null, "NOME");
+        Cursor c = bd.query("USER", User.COLUNAS, null, null, null, null, "NOME ASC");
         if (c.moveToFirst()){
+            User user = new User();
             do{
-                User user = new User();
                 user.setIdGoogle(c.getString(0));
                 user.setNome(c.getString(1));
                 user.setEmail(c.getString(2));
                 user.setSenha(c.getString(3));
+                user.setCarro(Integer.parseInt(c.getString(4)));
             }while(c.moveToNext());
         }
         c.close();
@@ -64,17 +65,14 @@ public class UserLog {
     public User buscarPeloId(int id){
         User user = new User();
 
-        Cursor cursor = bd.query("USER", User.COLUNAS,
-                "id="+id, null, null, null, null);
+        Cursor cursor = bd.query("USER", User.COLUNAS, "ID="+id, null, null, null, null);
 
         if (cursor.moveToFirst()){
             user.setIdGoogle(cursor.getString(0));
             user.setNome(cursor.getString(1));
             user.setEmail(cursor.getString(2));
             user.setSenha(cursor.getString(3));
-            /* TODO
-             * Pegar o objeto carro!
-             */
+            user.setCarro(Integer.parseInt(cursor.getString(4)));
         }
         cursor.close();
         return user;
@@ -90,9 +88,7 @@ public class UserLog {
             user.setNome(cursor.getString(1));
             user.setEmail(cursor.getString(2));
             user.setSenha(cursor.getString(3));
-            /* TODO
-             * Pegar o objeto carro!
-             */
+            user.setCarro(Integer.parseInt(cursor.getString(4)));
         }
         cursor.close();
         return user;

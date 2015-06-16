@@ -5,9 +5,6 @@ import android.database.DatabaseErrorHandler;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
-/**
- * Created by hamurabi on 6/11/15.
- */
 public class UserLogOpenHelper extends SQLiteOpenHelper {
     public static final String NOME_BANCO = "AutoBoard";
     public static final int VERSAO_BANCO = 1;

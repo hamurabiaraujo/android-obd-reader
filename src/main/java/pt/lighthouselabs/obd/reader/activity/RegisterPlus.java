@@ -2,6 +2,7 @@ package pt.lighthouselabs.obd.reader.activity;
 
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 
@@ -27,6 +28,7 @@ import com.google.android.gms.plus.model.people.Person;
 
 import pt.lighthouselabs.obd.reader.R;
 import pt.lighthouselabs.obd.reader.user.User;
+import pt.lighthouselabs.obd.reader.user.UserLog;
 
 public class RegisterPlus extends ActionBarActivity implements GoogleApiClient.ConnectionCallbacks, GoogleApiClient.OnConnectionFailedListener {
 
@@ -71,66 +73,6 @@ public class RegisterPlus extends ActionBarActivity implements GoogleApiClient.C
             showUi(false, true);
             resolveSignIn();
         }
-
-
-        // Ação para o botão finalizar cadastro
-        btFimCadastro.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                String nome, email, senha, repeteSenha;
-                String emailPattern = "[a-zA-Z0-9._-]+@[a-z]+\\.+[a-z]+";
-
-                nome = editNome.getText().toString();
-                email = editEmail.getText().toString().trim();
-                senha = editSenha.getText().toString();
-                repeteSenha = editSenhaRepete.getText().toString();
-
-
-                // Validação dos dados
-                if(nome.isEmpty() || nome == null) {
-                    editNome.setError("Insira um nome!");
-                    editNome.setFocusable(true);
-                    editNome.requestFocus();
-                } else if(!email.matches(emailPattern)) {
-                    editEmail.setError("Insira um e-mail válido!");
-                    editEmail.setFocusable(true);
-                    editEmail.requestFocus();
-                } else if(senha.isEmpty() || senha == null) {
-                    editSenha.setError("Insira uma senha!");
-                    editSenha.setFocusable(true);
-                    editSenha.requestFocus();
-                } else if(repeteSenha.isEmpty() || repeteSenha == null) {
-                    editSenhaRepete.setError("Repita sua senha!");
-                    editSenhaRepete.setFocusable(true);
-                    editSenhaRepete.requestFocus();
-                } else if(!senha.equals(repeteSenha)) {
-                    editSenhaRepete.setError("Os campos de senha devem ser idênticos!");
-                    editSenhaRepete.setFocusable(true);
-                    editSenhaRepete.requestFocus();
-                } else {
-
-                    Person p = Plus.PeopleApi.getCurrentPerson(googleApiClient);
-
-                    if(p != null) {
-                        String idStr = p.getId();
-                        String nomeStr = p.getDisplayName();
-                        String emailStr = Plus.AccountApi.getAccountName(googleApiClient);
-
-                        User user = new User();
-
-                        user.setIdGoogle(idStr);
-                        user.setNome(nomeStr);
-                        user.setEmail(emailStr);
-                        user.setSenha(senha);
-
-                        Toast.makeText(RegisterPlus.this, "Cadastrado com sucesso", Toast.LENGTH_LONG).show();
-                        Intent i = new Intent(RegisterPlus.this, MainActivity.class);
-                        startActivity(i);
-                    }
-                }
-
-            }
-        });
     }
 
     @Override
@@ -235,7 +177,7 @@ public class RegisterPlus extends ActionBarActivity implements GoogleApiClient.C
             editEmail.setText(emailStr);
 
         } else {
-            Toast.makeText(RegisterPlus.this, "Dados não recuperados", Toast.LENGTH_SHORT).show();
+            Toast.makeText(RegisterPlus.this, "Dados n\u00e3o recuperados", Toast.LENGTH_SHORT).show();
         }
     }
 
@@ -283,5 +225,83 @@ public class RegisterPlus extends ActionBarActivity implements GoogleApiClient.C
                 }
             });
         }
+    }
+
+    public void cadastrar(View view) {
+        String nome, email, senha, repeteSenha;
+        String emailPattern = "[a-zA-Z0-9._-]+@[a-z]+\\.+[a-z]+";
+
+        nome = editNome.getText().toString();
+        email = editEmail.getText().toString().trim();
+        senha = editSenha.getText().toString();
+        repeteSenha = editSenhaRepete.getText().toString();
+
+
+        // Validação dos dados
+        if(nome.isEmpty() || nome == null) {
+            editNome.setError("Insira um nome!");
+            editNome.setFocusable(true);
+            editNome.requestFocus();
+        } else if(!email.matches(emailPattern)) {
+            editEmail.setError("Insira um e-mail v\u00e1lido!");
+            editEmail.setFocusable(true);
+            editEmail.requestFocus();
+        } else if(senha.isEmpty() || senha == null) {
+            editSenha.setError("Insira uma senha!");
+            editSenha.setFocusable(true);
+            editSenha.requestFocus();
+        } else if(repeteSenha.isEmpty() || repeteSenha == null) {
+            editSenhaRepete.setError("Repita sua senha!");
+            editSenhaRepete.setFocusable(true);
+            editSenhaRepete.requestFocus();
+        } else if(!senha.equals(repeteSenha)) {
+            editSenhaRepete.setError("Os campos de senha devem ser id\u00eanticos!");
+            editSenhaRepete.setFocusable(true);
+            editSenhaRepete.requestFocus();
+        } else {
+
+            Person p = Plus.PeopleApi.getCurrentPerson(googleApiClient);
+
+            if(p != null) {
+                String idStr = p.getId();
+                String nomeStr = p.getDisplayName();
+                String emailStr = Plus.AccountApi.getAccountName(googleApiClient);
+
+                User user = new User();
+
+                user.setIdGoogle(idStr);
+                user.setNome(nomeStr);
+                user.setEmail(emailStr);
+                user.setSenha(senha);
+
+                UserLog userLog = new UserLog(this);
+
+                userLog.inserir(user);
+                Log.i("NOVO USU\u00c1RIO", user.getEmail());
+
+                Toast.makeText(RegisterPlus.this, "Cadastrado com sucesso", Toast.LENGTH_LONG).show();
+                Intent i = new Intent(RegisterPlus.this, MainActivity.class);
+                startActivity(i);
+            }
+        }
+    }
+
+    public void verificaUsuario (UserLog userLog, User user) {
+        if (userLog.buscarPeloEmail(user.getEmail()) != null) {
+            Log.i("USU\u00c1RIO J\u00c1 CADASTRADO", user.getEmail());
+
+            Toast.makeText(RegisterPlus.this, "Usu\u00e1rio j\u00e1 cadastrado, fa\u00e7a login ou recupere sua senha perdida", Toast.LENGTH_LONG).show();
+            Intent i = new Intent(RegisterPlus.this, Login.class);
+            startActivity(i);
+        } else {
+            userLog.inserir(user);
+            Log.i("NOVO USU\u00c1RIO", user.getEmail());
+
+            Toast.makeText(RegisterPlus.this, "Cadastrado com sucesso", Toast.LENGTH_LONG).show();
+            Intent i = new Intent(RegisterPlus.this, MainActivity.class);
+            startActivity(i);
+        }
+
+
     }
 }
